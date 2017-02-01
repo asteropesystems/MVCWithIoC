@@ -9,7 +9,13 @@ namespace MVCWithIoC.Controllers
 {
     public class HomeController : Controller
     {
-        private TrackingService trackingService = new TrackingService();
+        private ITrackingService trackingService;
+
+        public HomeController(ITrackingService trackingService)
+        {
+            this.trackingService = trackingService;
+        }
+
 
         public ActionResult Index()
         {
