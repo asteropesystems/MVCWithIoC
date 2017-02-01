@@ -5,14 +5,14 @@ using System.Web;
 
 namespace MVCWithIoC.Models
 {
-    public interface ITrackingService
+    public interface IProteinTrackingService
     {
         int Total { get; set; }
         int Goal { get; set; }
         void AddProtein(int amount);
     }
 
-    public class ProteinTrackingService : ITrackingService
+    public class ProteinTrackingService : IProteinTrackingService
     {
         private IProteinRepository repository;
 

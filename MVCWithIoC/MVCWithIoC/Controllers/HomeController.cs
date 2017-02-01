@@ -9,18 +9,18 @@ namespace MVCWithIoC.Controllers
 {
     public class HomeController : Controller
     {
-        private ITrackingService trackingService;
+        private IProteinTrackingService _proteinTrackingService;
 
-        public HomeController(ITrackingService trackingService)
+        public HomeController(IProteinTrackingService _proteinTrackingService)
         {
-            this.trackingService = trackingService;
+            this._proteinTrackingService = _proteinTrackingService;
         }
 
 
         public ActionResult Index()
         {
-            ViewBag.Total = trackingService.Total;
-            ViewBag.Goal = trackingService.Goal;
+            ViewBag.Total = _proteinTrackingService.Total;
+            ViewBag.Goal = _proteinTrackingService.Goal;
 
             return View();
         }
@@ -28,10 +28,10 @@ namespace MVCWithIoC.Controllers
         [HttpGet]
         public ActionResult AddProtein(int amount)
         {
-            trackingService.AddProtein(amount);
+            _proteinTrackingService.AddProtein(amount);
 
-            ViewBag.Total = trackingService.Total;
-            ViewBag.Goal = trackingService.Goal;
+            ViewBag.Total = _proteinTrackingService.Total;
+            ViewBag.Goal = _proteinTrackingService.Goal;
 
             return View();
         }

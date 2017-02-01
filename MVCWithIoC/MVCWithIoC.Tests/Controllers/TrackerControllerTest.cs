@@ -16,7 +16,7 @@ namespace MVCWithIoC.Tests.Controllers
         [TestMethod]
         public void NothingHappensGoalZero()
         {
-            HomeController controller = new HomeController(new StubTrackingService());
+            HomeController controller = new HomeController(new StubProteinTrackingService());
 
             ViewResult result = controller.Index() as ViewResult;
 
@@ -28,7 +28,7 @@ namespace MVCWithIoC.Tests.Controllers
         [TestMethod]
         public void WhenTotalIsZero_AndAmountAdded_TotalIsIncreased()
         {
-            var service = new StubTrackingService();
+            var service = new StubProteinTrackingService();
             service.Total = 10;
 
             HomeController controller = new HomeController(service);
@@ -42,7 +42,7 @@ namespace MVCWithIoC.Tests.Controllers
 
     }
 
-    public class StubTrackingService : ITrackingService
+    public class StubProteinTrackingService : IProteinTrackingService
     {
         public int Total { get; set; }
         public int Goal { get; set; }
